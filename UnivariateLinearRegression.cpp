@@ -12,7 +12,7 @@ namespace jagetiya
         double theta1_;           // theta parameter 1
         double alpha_;            // learning rate alpha    
         
-        double cost_function(const T x[], const T y[]) const
+        inline double cost_function(const T x[], const T y[]) const
         {
             double J = 0;
             for(int i = 0 ; i < m_ ; i++) 
@@ -81,7 +81,7 @@ int main()
         y[i] = rand() % 100;
     }
     
-
+    // set the alpha such as gradient-descent does not overshoot
     jagetiya::UnivariateLinearRegression<int> t(v, 0, 0, 0.0000000000005);
     t.train(x, y);
     std::cout << x[0] << " " <<y[0] << " " <<t.calculate_value(x[0]) <<std::endl;
