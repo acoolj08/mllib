@@ -53,14 +53,12 @@ namespace jagetiya
             double prev_result = cost_function(x, y);
             gradient_descent(x, y);
             double current_result = cost_function(x, y);
-            double tmp = 0;
             while( !(current_result - prev_result < 0.01
                 &&  current_result - prev_result > -0.01))
             {
                 gradient_descent(x, y);
-                tmp = current_result;
+                prev_result = current_result;
                 current_result = cost_function(x, y);
-                prev_result = tmp;
                 std::cout << current_result <<std::endl;
             }
             return current_result;
@@ -90,4 +88,7 @@ int main()
     std::cout << x[3] << " " <<y[3] << " " <<t.calculate_value(x[3]) <<std::endl;
     std::cout << x[4] << " " <<y[4] << " " <<t.calculate_value(x[4]) <<std::endl;
     std::cout << x[5] << " " <<y[5] << " " <<t.calculate_value(x[5]) <<std::endl;
+    delete x;
+    delete y;
+    return 0;
 }
